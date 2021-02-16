@@ -1,0 +1,19 @@
+# Copyright (c) 2021 Caspar Friedrich <c.s.w.friedrich@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+description: 256-Kbit (32K × 8) Serial (SPI) F-RAM
+
+compatible: "cypress,fm25w256"
+
+include: [eeprom-base.yaml, spi-device.yaml]
+
+properties:
+    wp-gpios:
+      type: phandle-array
+      required: false
+      description: Write Protect pin
+
+    hold-gpios:
+      type: phandle-array
+      required: false
+      description: HOLD pin

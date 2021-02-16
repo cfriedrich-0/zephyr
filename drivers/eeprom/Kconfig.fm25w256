@@ -1,0 +1,19 @@
+# Copyright (c) 2021 Caspar Friedrich <c.s.w.friedrich@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+menuconfig EEPROM_FM25W256
+	bool "Cypress FM25W256 EEPROM driver"
+	select SPI
+
+choice
+	prompt "SPI Mode"
+	depends on EEPROM_FM25W256
+	default EEPROM_FM25W256_SPI_MODE_0
+
+config EEPROM_FM25W256_SPI_MODE_0
+	bool "SPI Mode 0 (CPOL = 0, CPHA = 0)"
+
+config EEPROM_FM25W256_SPI_MODE_3
+	bool "SPI Mode 3 (CPOL = 1, CPHA = 1)"
+
+endchoice
