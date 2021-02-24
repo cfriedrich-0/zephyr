@@ -50,8 +50,7 @@ extern "C" {
  *         index "idx"
  * @see DT_PHANDLE_BY_IDX()
  */
-#define DT_GPIO_CTLR_BY_IDX(node_id, gpio_pha, idx) \
-	DT_PHANDLE_BY_IDX(node_id, gpio_pha, idx)
+#define DT_GPIO_CTLR_BY_IDX(node_id, gpio_pha, idx) DT_PHANDLE_BY_IDX(node_id, gpio_pha, idx)
 
 /**
  * @brief Equivalent to DT_GPIO_CTLR_BY_IDX(node_id, gpio_pha, 0)
@@ -62,8 +61,7 @@ extern "C" {
  *         in "gpio_pha"
  * @see DT_GPIO_CTLR_BY_IDX()
  */
-#define DT_GPIO_CTLR(node_id, gpio_pha) \
-	DT_GPIO_CTLR_BY_IDX(node_id, gpio_pha, 0)
+#define DT_GPIO_CTLR(node_id, gpio_pha) DT_GPIO_CTLR_BY_IDX(node_id, gpio_pha, 0)
 
 /**
  * @brief Get a label property from a gpio phandle-array property
@@ -99,7 +97,7 @@ extern "C" {
  * @return the label property of the node referenced at index "idx"
  * @see DT_PHANDLE_BY_IDX()
  */
-#define DT_GPIO_LABEL_BY_IDX(node_id, gpio_pha, idx) \
+#define DT_GPIO_LABEL_BY_IDX(node_id, gpio_pha, idx)                                               \
 	DT_PROP(DT_GPIO_CTLR_BY_IDX(node_id, gpio_pha, idx), label)
 
 /**
@@ -110,8 +108,7 @@ extern "C" {
  * @return the label property of the node referenced at index 0
  * @see DT_GPIO_LABEL_BY_IDX()
  */
-#define DT_GPIO_LABEL(node_id, gpio_pha) \
-	DT_GPIO_LABEL_BY_IDX(node_id, gpio_pha, 0)
+#define DT_GPIO_LABEL(node_id, gpio_pha) DT_GPIO_LABEL_BY_IDX(node_id, gpio_pha, 0)
 
 /**
  * @brief Get a GPIO specifier's pin cell at an index
@@ -154,8 +151,7 @@ extern "C" {
  * @return the pin cell value at index "idx"
  * @see DT_PHA_BY_IDX()
  */
-#define DT_GPIO_PIN_BY_IDX(node_id, gpio_pha, idx) \
-	DT_PHA_BY_IDX(node_id, gpio_pha, idx, pin)
+#define DT_GPIO_PIN_BY_IDX(node_id, gpio_pha, idx) DT_PHA_BY_IDX(node_id, gpio_pha, idx, pin)
 
 /**
  * @brief Equivalent to DT_GPIO_PIN_BY_IDX(node_id, gpio_pha, 0)
@@ -165,8 +161,7 @@ extern "C" {
  * @return the pin cell value at index 0
  * @see DT_GPIO_PIN_BY_IDX()
  */
-#define DT_GPIO_PIN(node_id, gpio_pha) \
-	DT_GPIO_PIN_BY_IDX(node_id, gpio_pha, 0)
+#define DT_GPIO_PIN(node_id, gpio_pha) DT_GPIO_PIN_BY_IDX(node_id, gpio_pha, 0)
 
 /**
  * @brief Get a GPIO specifier's flags cell at an index
@@ -210,7 +205,7 @@ extern "C" {
  * @return the flags cell value at index "idx", or zero if there is none
  * @see DT_PHA_BY_IDX()
  */
-#define DT_GPIO_FLAGS_BY_IDX(node_id, gpio_pha, idx) \
+#define DT_GPIO_FLAGS_BY_IDX(node_id, gpio_pha, idx)                                               \
 	DT_PHA_BY_IDX_OR(node_id, gpio_pha, idx, flags, 0)
 
 /**
@@ -221,8 +216,7 @@ extern "C" {
  * @return the flags cell value at index 0, or zero if there is none
  * @see DT_GPIO_FLAGS_BY_IDX()
  */
-#define DT_GPIO_FLAGS(node_id, gpio_pha) \
-	DT_GPIO_FLAGS_BY_IDX(node_id, gpio_pha, 0)
+#define DT_GPIO_FLAGS(node_id, gpio_pha) DT_GPIO_FLAGS_BY_IDX(node_id, gpio_pha, 0)
 
 /**
  * @brief Get a label property from a DT_DRV_COMPAT instance's GPIO
@@ -233,7 +227,7 @@ extern "C" {
  * @param idx logical index into "gpio_pha"
  * @return the label property of the node referenced at index "idx"
  */
-#define DT_INST_GPIO_LABEL_BY_IDX(inst, gpio_pha, idx) \
+#define DT_INST_GPIO_LABEL_BY_IDX(inst, gpio_pha, idx)                                             \
 	DT_GPIO_LABEL_BY_IDX(DT_DRV_INST(inst), gpio_pha, idx)
 
 /**
@@ -243,8 +237,7 @@ extern "C" {
  *        type "phandle-array"
  * @return the label property of the node referenced at index 0
  */
-#define DT_INST_GPIO_LABEL(inst, gpio_pha) \
-	DT_INST_GPIO_LABEL_BY_IDX(inst, gpio_pha, 0)
+#define DT_INST_GPIO_LABEL(inst, gpio_pha) DT_INST_GPIO_LABEL_BY_IDX(inst, gpio_pha, 0)
 
 /**
  * @brief Get a DT_DRV_COMPAT instance's GPIO specifier's pin cell value
@@ -256,7 +249,7 @@ extern "C" {
  * @return the pin cell value at index "idx"
  * @see DT_GPIO_PIN_BY_IDX()
  */
-#define DT_INST_GPIO_PIN_BY_IDX(inst, gpio_pha, idx) \
+#define DT_INST_GPIO_PIN_BY_IDX(inst, gpio_pha, idx)                                               \
 	DT_GPIO_PIN_BY_IDX(DT_DRV_INST(inst), gpio_pha, idx)
 
 /**
@@ -267,8 +260,7 @@ extern "C" {
  * @return the pin cell value at index 0
  * @see DT_INST_GPIO_PIN_BY_IDX()
  */
-#define DT_INST_GPIO_PIN(inst, gpio_pha) \
-	DT_INST_GPIO_PIN_BY_IDX(inst, gpio_pha, 0)
+#define DT_INST_GPIO_PIN(inst, gpio_pha) DT_INST_GPIO_PIN_BY_IDX(inst, gpio_pha, 0)
 
 /**
  * @brief Get a DT_DRV_COMPAT instance's GPIO specifier's flags cell
@@ -280,7 +272,7 @@ extern "C" {
  * @return the flags cell value at index "idx", or zero if there is none
  * @see DT_GPIO_FLAGS_BY_IDX()
  */
-#define DT_INST_GPIO_FLAGS_BY_IDX(inst, gpio_pha, idx) \
+#define DT_INST_GPIO_FLAGS_BY_IDX(inst, gpio_pha, idx)                                             \
 	DT_GPIO_FLAGS_BY_IDX(DT_DRV_INST(inst), gpio_pha, idx)
 
 /**
@@ -291,8 +283,7 @@ extern "C" {
  * @return the flags cell value at index 0, or zero if there is none
  * @see DT_INST_GPIO_FLAGS_BY_IDX()
  */
-#define DT_INST_GPIO_FLAGS(inst, gpio_pha) \
-	DT_INST_GPIO_FLAGS_BY_IDX(inst, gpio_pha, 0)
+#define DT_INST_GPIO_FLAGS(inst, gpio_pha) DT_INST_GPIO_FLAGS_BY_IDX(inst, gpio_pha, 0)
 
 /**
  * @}
@@ -302,4 +293,4 @@ extern "C" {
 }
 #endif
 
-#endif  /* ZEPHYR_INCLUDE_DEVICETREE_GPIO_H_ */
+#endif /* ZEPHYR_INCLUDE_DEVICETREE_GPIO_H_ */
