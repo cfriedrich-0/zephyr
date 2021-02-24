@@ -240,6 +240,18 @@ extern "C" {
 #define DT_INST_GPIO_LABEL(inst, gpio_pha) DT_INST_GPIO_LABEL_BY_IDX(inst, gpio_pha, 0)
 
 /**
+ * @brief Like DT_INST_GPIO_LABEL(), but with a fallback to default_value
+ * @param inst DT_DRV_COMPAT instance number
+ * @param gpio_pha lowercase-and-underscores GPIO property with
+ *        type "phandle-array"
+ * @param default_value a fallback value to expand to
+ * @return DT_INST_GPIO_LABEL(inst, prop) or default_value
+ */
+#define DT_INST_GPIO_LABEL_OR(inst, gpio_pha, default_value)                                       \
+	COND_CODE_1(DT_INST_NODE_HAS_PROP(inst, gpio_pha), (DT_INST_GPIO_LABEL(inst, gpio_pha)),   \
+		    default_value)
+
+/**
  * @brief Get a DT_DRV_COMPAT instance's GPIO specifier's pin cell value
  *        at an index
  * @param inst DT_DRV_COMPAT instance number
@@ -263,6 +275,18 @@ extern "C" {
 #define DT_INST_GPIO_PIN(inst, gpio_pha) DT_INST_GPIO_PIN_BY_IDX(inst, gpio_pha, 0)
 
 /**
+ * @brief Like DT_INST_GPIO_PIN(), but with a fallback to default_value
+ * @param inst DT_DRV_COMPAT instance number
+ * @param gpio_pha lowercase-and-underscores GPIO property with
+ *        type "phandle-array"
+ * @param default_value a fallback value to expand to
+ * @return DT_INST_GPIO_PIN(inst, prop) or default_value
+ */
+#define DT_INST_GPIO_PIN_OR(inst, gpio_pha, default_value)                                         \
+	COND_CODE_1(DT_INST_NODE_HAS_PROP(inst, gpio_pha), (DT_INST_GPIO_PIN(inst, gpio_pha)),     \
+		    default_value)
+
+/**
  * @brief Get a DT_DRV_COMPAT instance's GPIO specifier's flags cell
  *        at an index
  * @param inst DT_DRV_COMPAT instance number
@@ -284,6 +308,18 @@ extern "C" {
  * @see DT_INST_GPIO_FLAGS_BY_IDX()
  */
 #define DT_INST_GPIO_FLAGS(inst, gpio_pha) DT_INST_GPIO_FLAGS_BY_IDX(inst, gpio_pha, 0)
+
+/**
+ * @brief Like DT_INST_GPIO_FLAGS(), but with a fallback to default_value
+ * @param inst DT_DRV_COMPAT instance number
+ * @param gpio_pha lowercase-and-underscores GPIO property with
+ *        type "phandle-array"
+ * @param default_value a fallback value to expand to
+ * @return DT_INST_GPIO_FLAGS(inst, prop) or default_value
+ */
+#define DT_INST_GPIO_FLAGS_OR(inst, gpio_pha, default_value)                                       \
+	COND_CODE_1(DT_INST_NODE_HAS_PROP(inst, gpio_pha), (DT_INST_GPIO_FLAGS(inst, gpio_pha)),   \
+		    default_value)
 
 /**
  * @}
